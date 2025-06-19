@@ -56,3 +56,23 @@ env:
     availability:
       - BUILD
       - RUNTIME
+  - variable: NEXT_PUBLIC_DOMAIN
+    value: "martin--martin-45db8.asia-east1.hosted.app"
+    availability:
+      - BUILD
+      - RUNTIME
+  - variable: NEXT_PUBLIC_ALGOLIA_APP_ID
+    value: "43NGDZR4IA"
+    availability:
+      - BUILD
+      - RUNTIME
+  - variable: NEXT_PUBLIC_ALGOLIA_APP_KEY
+    value: "30e2ada03f4e50896f490270d4fc3f10"
+    availability:
+      - BUILD
+      - RUNTIME
+  - variable: NEXT_PUBLIC_FIREBASE_SERVICE_ACCOUNT_KEYS
+    value: "{}"
+    availability:
+      - BUILD
+      - RUNTIME

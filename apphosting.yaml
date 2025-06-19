@@ -12,37 +12,47 @@ env:
   # Configure environment variables.
   # See https://firebase.google.com/docs/app-hosting/configure#user-defined-environment
   - variable: NEXT_PUBLIC_FIREBASE_API_KEY
-    value: "AIzaSyDLjALwFyyQFxXwjPIb1Pu1ehgG1129OwY"
+    value: "AIzaSyCUDU4n6SvAQBT8qb1R0E_oWvSeJxYu-ro"
     availability:
       - BUILD
       - RUNTIME
   - variable: NEXT_PUBLIC_FIREBASE_AUTH_DOMAIN
-    value: "martin-45db8.firebaseapp.com"
+    value: "lin-llc.firebaseapp.com"
     availability:
       - BUILD
       - RUNTIME
   - variable: NEXT_PUBLIC_FIREBASE_PROJECT_ID
-    value: "martin-45db8"
+    value: "lin-llc"
     availability:
       - BUILD
       - RUNTIME
   - variable: NEXT_PUBLIC_FIREBASE_STORAGE_BUCKET
-    value: "martin-45db8.firebasestorage.app"
+    value: "lin-llc.firebasestorage.app"
     availability:
       - BUILD
       - RUNTIME
   - variable: NEXT_PUBLIC_FIREBASE_MESSAGING_SENDER_ID
-    value: "227979699323"
+    value: "394023041902"
     availability:
       - BUILD
       - RUNTIME
   - variable: NEXT_PUBLIC_FIREBASE_APP_ID
-    value: "1:227979699323:web:fe7c5f1193a97bbca96ede"
+    value: "1:394023041902:web:f9874be5d0d192557b1f7f"
     availability:
       - BUILD
       - RUNTIME
   - variable: NEXT_PUBLIC_FIREBASE_MEASUREMENT_ID
-    value: "G-07M3EH9N9B"
+    value: "G-62JEHK00G8"
+    availability:
+      - BUILD
+      - RUNTIME
+  - variable: NEXT_PUBLIC_OPENWEATHERMAP_API_KEY
+    value: "75d07b2345362f4603a113aee9c6747c"
+    availability:
+      - BUILD
+      - RUNTIME
+  - variable: NEXT_PUBLIC_USE_FIREBASE_EMULATOR
+    value: "true"
     availability:
       - BUILD
       - RUNTIME

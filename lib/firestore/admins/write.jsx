@@ -10,9 +10,6 @@ import {
 import { getDownloadURL, ref, uploadBytes } from "firebase/storage";
 
 export const createNewAdmin = async ({ data, image }) => {
-  if (!image) {
-    throw new Error("Image is Required");
-  }
   if (!data?.name) {
     throw new Error("Name is required");
   }
@@ -21,10 +18,13 @@ export const createNewAdmin = async ({ data, image }) => {
   }
 
   const newId = data?.email;
+  let imageURL = null;
 
-  const imageRef = ref(storage, `admins/${newId}`);
-  await uploadBytes(imageRef, image);
-  const imageURL = await getDownloadURL(imageRef);
+  if (image) {
+    const imageRef = ref(storage, `admins/${newId}`);
+    await uploadBytes(imageRef, image);
+    imageURL = await getDownloadURL(imageRef);
+  }
 
   await setDoc(doc(db, `admins/${newId}`), {
     ...data,

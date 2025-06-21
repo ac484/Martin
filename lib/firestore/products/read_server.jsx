@@ -36,9 +36,14 @@ export const getProductsByCategory = async ({ categoryId }) => {
   const list = await getDocs(
     query(
       collection(db, "products"),
-      orderBy("timestampCreate", "desc"),
       where("categoryId", "==", categoryId)
     )
   );
-  return list.docs.map((snap) => snap.data());
+  const products = list.docs.map((snap) => snap.data());
+  return products.sort((a, b) => {
+    if (a.timestampCreate && b.timestampCreate) {
+      return b.timestampCreate.toMillis() - a.timestampCreate.toMillis();
+    }
+    return 0;
+  });
 };

@@ -1,3 +1,5 @@
+"use client";
+
 import { useSettings } from "@/lib/firestore/settings/read";
 import { Mail, MapPin, Phone, Clock, Send } from "lucide-react";
 
@@ -130,50 +132,64 @@ export default function ContactUs() {
                   聯絡資訊
                 </h2>
                 <div className="space-y-6">
-                  <div className="flex items-start gap-4">
-                    <div className="bg-blue-100 p-3 rounded-full">
-                      <Phone className="w-6 h-6 text-blue-600" />
+                  {settings?.phone && (
+                    <div className="flex items-start gap-4">
+                      <div className="bg-blue-100 p-3 rounded-full">
+                        <Phone className="w-6 h-6 text-blue-600" />
+                      </div>
+                      <div>
+                        <h3 className="font-semibold text-gray-900 mb-1">香氛諮詢專線</h3>
+                        <p className="text-gray-600">{settings.phone}</p>
+                        <p className="text-sm text-gray-500">週一至週五 10:00-19:00</p>
+                      </div>
                     </div>
-                    <div>
-                      <h3 className="font-semibold text-gray-900 mb-1">香氛諮詢專線</h3>
-                      <p className="text-gray-600">{settings?.phone || "+886 2 2345 6789"}</p>
-                      <p className="text-sm text-gray-500">週一至週五 10:00-19:00</p>
-                    </div>
-                  </div>
+                  )}
                   
-                  <div className="flex items-start gap-4">
-                    <div className="bg-green-100 p-3 rounded-full">
-                      <Mail className="w-6 h-6 text-green-600" />
+                  {settings?.email && (
+                    <div className="flex items-start gap-4">
+                      <div className="bg-green-100 p-3 rounded-full">
+                        <Mail className="w-6 h-6 text-green-600" />
+                      </div>
+                      <div>
+                        <h3 className="font-semibold text-gray-900 mb-1">電子郵件</h3>
+                        <p className="text-gray-600">{settings.email}</p>
+                        <p className="text-sm text-gray-500">24小時內回覆</p>
+                      </div>
                     </div>
-                    <div>
-                      <h3 className="font-semibold text-gray-900 mb-1">電子郵件</h3>
-                      <p className="text-gray-600">{settings?.email || "service@aromatherapy.com"}</p>
-                      <p className="text-sm text-gray-500">24小時內回覆</p>
-                    </div>
-                  </div>
+                  )}
                   
-                  <div className="flex items-start gap-4">
-                    <div className="bg-purple-100 p-3 rounded-full">
-                      <MapPin className="w-6 h-6 text-purple-600" />
+                  {settings?.address && (
+                    <div className="flex items-start gap-4">
+                      <div className="bg-purple-100 p-3 rounded-full">
+                        <MapPin className="w-6 h-6 text-purple-600" />
+                      </div>
+                      <div>
+                        <h3 className="font-semibold text-gray-900 mb-1">香氛體驗館</h3>
+                        <p className="text-gray-600">{settings.address}</p>
+                        <p className="text-sm text-gray-500">歡迎預約參觀體驗</p>
+                      </div>
                     </div>
-                    <div>
-                      <h3 className="font-semibold text-gray-900 mb-1">香氛體驗館</h3>
-                      <p className="text-gray-600">{settings?.address || "台北市信義區香氛大道123號"}</p>
-                      <p className="text-sm text-gray-500">歡迎預約參觀體驗</p>
-                    </div>
-                  </div>
+                  )}
                   
-                  <div className="flex items-start gap-4">
-                    <div className="bg-orange-100 p-3 rounded-full">
-                      <Clock className="w-6 h-6 text-orange-600" />
+                  {(settings?.businessHours?.weekdays || settings?.businessHours?.weekends) && (
+                    <div className="flex items-start gap-4">
+                      <div className="bg-orange-100 p-3 rounded-full">
+                        <Clock className="w-6 h-6 text-orange-600" />
+                      </div>
+                      <div>
+                        <h3 className="font-semibold text-gray-900 mb-1">營業時間</h3>
+                        {settings.businessHours?.weekdays && (
+                          <p className="text-gray-600">週一至週五: {settings.businessHours.weekdays}</p>
+                        )}
+                        {settings.businessHours?.weekends && (
+                          <p className="text-gray-600">週六至週日: {settings.businessHours.weekends}</p>
+                        )}
+                        {settings?.note && (
+                          <p className="text-sm text-gray-500">{settings.note}</p>
+                        )}
+                      </div>
                     </div>
-                    <div>
-                      <h3 className="font-semibold text-gray-900 mb-1">營業時間</h3>
-                      <p className="text-gray-600">週一至週五: {settings?.businessHours?.weekdays || "10:00 - 19:00"}</p>
-                      <p className="text-gray-600">週六至週日: {settings?.businessHours?.weekends || "11:00 - 18:00"}</p>
-                      <p className="text-sm text-gray-500">{settings?.note || "國定假日休息"}</p>
-                    </div>
-                  </div>
+                  )}
                 </div>
               </div>
 

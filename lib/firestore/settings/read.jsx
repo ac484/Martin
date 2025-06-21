@@ -11,12 +11,21 @@ export function useSettings() {
       const ref = doc(db, `${path}/contact`);
       const unsub = onSnapshot(
         ref,
-        (snapshot) => next(null, snapshot.exists() ? snapshot.data() : null),
-        (err) => next(err, null)
+        (snapshot) => {
+          next(null, snapshot.exists() ? snapshot.data() : null);
+        },
+        (err) => {
+          console.error("Error fetching settings:", err);
+          next(err, null);
+        }
       );
       return () => unsub();
     }
   );
 
-  return { data, error: error?.message, isLoading: data === undefined };
+  return { 
+    data, 
+    error: error?.message, 
+    isLoading: data === undefined 
+  };
 } 

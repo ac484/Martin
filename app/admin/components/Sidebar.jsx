@@ -67,9 +67,9 @@ export default function Sidebar() {
       icon: <ShieldCheck className="h-5 w-5" />,
     },
     {
-      name: "Admins",
+      name: "Settings",
       link: "/admin/settings",
-      icon: <ShieldCheck className="h-5 w-5" />,
+      icon: <Settings className="h-5 w-5" />,
     },
   ];
   return (

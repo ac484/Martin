@@ -1,6 +1,9 @@
+import { useSettings } from "@/lib/firestore/settings/read";
 import { Mail, MapPin, Phone, Clock, Send } from "lucide-react";
 
 export default function ContactUs() {
+  const { data: settings, isLoading } = useSettings();
+
   return (
     <div className="min-h-screen flex flex-col">
       {/* Hero Section */}
@@ -10,8 +13,7 @@ export default function ContactUs() {
             聯絡我們
           </h1>
           <p className="text-lg text-gray-600 max-w-3xl mx-auto">
-            我們很樂意為您提供專業的香氛諮詢服務。無論您對香氛有任何疑問、
-            需要個人化建議，或想了解更多產品資訊，請隨時與我們聯絡。
+            {settings?.description || "我們很樂意為您提供專業的香氛諮詢服務。無論您對香氛有任何疑問、需要個人化建議，或想了解更多產品資訊，請隨時與我們聯絡。"}
           </p>
         </div>
       </section>
@@ -134,7 +136,7 @@ export default function ContactUs() {
                     </div>
                     <div>
                       <h3 className="font-semibold text-gray-900 mb-1">香氛諮詢專線</h3>
-                      <p className="text-gray-600">+886 2 2345 6789</p>
+                      <p className="text-gray-600">{settings?.phone || "+886 2 2345 6789"}</p>
                       <p className="text-sm text-gray-500">週一至週五 10:00-19:00</p>
                     </div>
                   </div>
@@ -145,7 +147,7 @@ export default function ContactUs() {
                     </div>
                     <div>
                       <h3 className="font-semibold text-gray-900 mb-1">電子郵件</h3>
-                      <p className="text-gray-600">service@aromatherapy.com</p>
+                      <p className="text-gray-600">{settings?.email || "service@aromatherapy.com"}</p>
                       <p className="text-sm text-gray-500">24小時內回覆</p>
                     </div>
                   </div>
@@ -156,7 +158,7 @@ export default function ContactUs() {
                     </div>
                     <div>
                       <h3 className="font-semibold text-gray-900 mb-1">香氛體驗館</h3>
-                      <p className="text-gray-600">台北市信義區香氛大道123號</p>
+                      <p className="text-gray-600">{settings?.address || "台北市信義區香氛大道123號"}</p>
                       <p className="text-sm text-gray-500">歡迎預約參觀體驗</p>
                     </div>
                   </div>
@@ -167,9 +169,9 @@ export default function ContactUs() {
                     </div>
                     <div>
                       <h3 className="font-semibold text-gray-900 mb-1">營業時間</h3>
-                      <p className="text-gray-600">週一至週五: 10:00 - 19:00</p>
-                      <p className="text-gray-600">週六至週日: 11:00 - 18:00</p>
-                      <p className="text-sm text-gray-500">國定假日休息</p>
+                      <p className="text-gray-600">週一至週五: {settings?.businessHours?.weekdays || "10:00 - 19:00"}</p>
+                      <p className="text-gray-600">週六至週日: {settings?.businessHours?.weekends || "11:00 - 18:00"}</p>
+                      <p className="text-sm text-gray-500">{settings?.note || "國定假日休息"}</p>
                     </div>
                   </div>
                 </div>

@@ -11,6 +11,7 @@ import {
   PackageOpen,
   ShieldCheck,
   ShoppingCart,
+  Settings,
   Star,
   User,
 } from "lucide-react";
@@ -63,6 +64,11 @@ export default function Sidebar() {
     {
       name: "Admins",
       link: "/admin/admins",
+      icon: <ShieldCheck className="h-5 w-5" />,
+    },
+    {
+      name: "Admins",
+      link: "/admin/settings",
       icon: <ShieldCheck className="h-5 w-5" />,
     },
   ];

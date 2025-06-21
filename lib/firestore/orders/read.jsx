@@ -40,18 +40,24 @@ export function useOrders({ uid }) {
     ([path, uid], { next }) => {
       const ref = query(
         collection(db, path),
-        where("uid", "==", uid),
-        orderBy("timestampCreate", "desc")
+        where("uid", "==", uid)
       );
       const unsub = onSnapshot(
         ref,
-        (snapshot) =>
+        (snapshot) => {
+          const orders = snapshot.docs.map((snap) => snap.data());
+          // 在記憶體中排序，避免需要複合索引
+          const sortedOrders = orders.sort((a, b) => {
+            if (a.timestampCreate && b.timestampCreate) {
+              return b.timestampCreate.toMillis() - a.timestampCreate.toMillis();
+            }
+            return 0;
+          });
           next(
             null,
-            snapshot.docs.length === 0
-              ? null
-              : snapshot.docs.map((snap) => snap.data())
-          ),
+            sortedOrders.length === 0 ? null : sortedOrders
+          );
+        },
         (err) => next(err, null)
       );
       return () => unsub();

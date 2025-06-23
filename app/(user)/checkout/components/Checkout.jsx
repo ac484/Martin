@@ -176,7 +176,7 @@ export default function Checkout({ productList }) {
           <div className="flex flex-col gap-2">
             {productList?.map((item) => {
               return (
-                <div className="flex gap-3 items-center">
+                <div className="flex gap-3 items-center" key={item?.id}>
                   <img
                     className="w-10 h-10 object-cover rounded-lg"
                     src={item?.product?.featureImageURL}

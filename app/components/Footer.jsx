@@ -14,19 +14,19 @@ export default function Footer() {
         </div>
         <div className="flex-1 flex flex-col md:flex-row justify-end gap-4">
           {settings?.phone && (
-            <div className="flex gap-2 items-center">
+            <div className="flex gap-2 items-center" key="phone">
               <Phone size={12} className="text-blue-500" />
               <h2 className="text-sm text-gray-600">{settings.phone}</h2>
             </div>
           )}
           {settings?.email && (
-            <div className="flex gap-2 items-center">
+            <div className="flex gap-2 items-center" key="email">
               <Mail size={12} className="text-blue-500" />
               <h2 className="text-sm text-gray-600">{settings.email}</h2>
             </div>
           )}
           {settings?.address && (
-            <div className="flex gap-2 items-center">
+            <div className="flex gap-2 items-center" key="address">
               <MapPin size={12} className="text-blue-500" />
               <h2 className="text-sm text-gray-600">{settings.address}</h2>
             </div>

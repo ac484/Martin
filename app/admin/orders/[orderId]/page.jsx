@@ -48,9 +48,12 @@ export default function Page() {
           </h4>
         </div>
         <div className="flex flex-col gap-3">
-          {order?.checkout?.line_items?.map((product) => {
+          {order?.checkout?.line_items?.map((product, index) => {
             return (
-              <div className="flex gap-2 items-center">
+              <div
+                className="flex gap-2 items-center"
+                key={`${product?.price_data?.product_data?.name}-${index}`}
+              >
                 <img
                   className="h-10 w-10 rounded-lg"
                   src={product?.price_data?.product_data?.images?.[0]}

@@ -186,6 +186,7 @@ export default function Form() {
             {products?.map((item) => {
               return (
                 <option
+                  key={item?.id}
                   disabled={data?.products?.includes(item?.id)}
                   value={item?.id}
                 >

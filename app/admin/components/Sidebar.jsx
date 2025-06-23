@@ -80,8 +80,8 @@ export default function Sidebar() {
         </Link>
       </div>
       <ul className="flex-1 h-full overflow-y-auto flex flex-col gap-4">
-        {menuList?.map((item, key) => {
-          return <Tab item={item} key={key} />;
+        {menuList?.map((item) => {
+          return <Tab item={item} key={item?.link} />;
         })}
       </ul>
       <div className="flex justify-center">

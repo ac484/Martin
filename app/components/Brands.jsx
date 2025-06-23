@@ -48,9 +48,9 @@ export default function Brands({ brands }) {
         {(brands?.length <= 2
           ? [...brands, ...brands, ...brands]
           : brands
-        )?.map((brand) => {
+        )?.map((brand, index) => {
           return (
-            <div className="px-2">
+            <div className="px-2" key={`${brand?.id}-${index}`}>
               <div className="flex flex-col gap-2 items-center justify-center">
                 <div className="h-20 rounded-lg md:p-5 p-2 border overflow-hidden">
                   <img

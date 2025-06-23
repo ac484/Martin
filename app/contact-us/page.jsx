@@ -133,7 +133,7 @@ export default function ContactUs() {
                 </h2>
                 <div className="space-y-6">
                   {settings?.phone && (
-                    <div className="flex items-start gap-4">
+                    <div className="flex items-start gap-4" key="phone">
                       <div className="bg-blue-100 p-3 rounded-full">
                         <Phone className="w-6 h-6 text-blue-600" />
                       </div>
@@ -146,7 +146,7 @@ export default function ContactUs() {
                   )}
                   
                   {settings?.email && (
-                    <div className="flex items-start gap-4">
+                    <div className="flex items-start gap-4" key="email">
                       <div className="bg-green-100 p-3 rounded-full">
                         <Mail className="w-6 h-6 text-green-600" />
                       </div>
@@ -159,7 +159,7 @@ export default function ContactUs() {
                   )}
                   
                   {settings?.address && (
-                    <div className="flex items-start gap-4">
+                    <div className="flex items-start gap-4" key="address">
                       <div className="bg-purple-100 p-3 rounded-full">
                         <MapPin className="w-6 h-6 text-purple-600" />
                       </div>
@@ -172,7 +172,7 @@ export default function ContactUs() {
                   )}
                   
                   {(settings?.businessHours?.weekdays || settings?.businessHours?.weekends) && (
-                    <div className="flex items-start gap-4">
+                    <div className="flex items-start gap-4" key="businessHours">
                       <div className="bg-orange-100 p-3 rounded-full">
                         <Clock className="w-6 h-6 text-orange-600" />
                       </div>

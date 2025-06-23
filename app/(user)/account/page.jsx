@@ -43,7 +43,10 @@ export default function Page() {
             0
           );
           return (
-            <div className="flex flex-col gap-2 border rounded-lg p-4">
+            <div
+              className="flex flex-col gap-2 border rounded-lg p-4"
+              key={item?.id}
+            >
               <div className="flex flex-col gap-2">
                 <div className="flex gap-3">
                   <h3>{orderIndex + 1}</h3>
@@ -60,9 +63,12 @@ export default function Page() {
                 </h4>
               </div>
               <div>
-                {item?.checkout?.line_items?.map((product) => {
+                {item?.checkout?.line_items?.map((product, productIndex) => {
                   return (
-                    <div className="flex gap-2 items-center">
+                    <div
+                      className="flex gap-2 items-center"
+                      key={`${product?.price_data?.product_data?.name}-${productIndex}`}
+                    >
                       <img
                         className="h-10 w-10 rounded-lg"
                         src={product?.price_data?.product_data?.images?.[0]}

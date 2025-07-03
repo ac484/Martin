@@ -74,3 +74,4 @@ Key enhancements and explanations:
        --foreground: 213 31% 91%;       /* gray-300 */
        --primary: 217.2 91.2% 59.8%;    /* blue-500 */
      }
+    
